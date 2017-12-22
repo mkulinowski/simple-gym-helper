@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2017-10-02 19:26:43 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="simplegymdb" dynamic-insert="false" dynamic-update="false" mutable="true" name="entities.ClassSchedule" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="class_schedule">
+        <composite-id class="entities.ClassScheduleId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="name" type="string">
+                <column length="50" name="Name"/>
+            </key-property>
+            <key-property name="date" type="date">
+                <column length="10" name="Date"/>
+            </key-property>
+            <key-property name="day" type="string">
+                <column length="9" name="Day"/>
+            </key-property>
+            <key-property name="scheduledTime" type="time">
+                <column length="8" name="`Scheduled time`"/>
+            </key-property>
+            <key-property name="trainerName" type="string">
+                <column length="20" name="`Trainer name`"/>
+            </key-property>
+            <key-property name="trainerLastName" type="string">
+                <column length="40" name="`Trainer last name`"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">baza1234</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/simplegymdb</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="hibernate.current_session_context_class">thread</property>
+  <mapping resource="entities/Activities.hbm.xml"/>
+  <mapping resource="entities/Address.hbm.xml"/>
+  <mapping resource="entities/Classes.hbm.xml"/>
+  <mapping resource="entities/ClassSchedule.hbm.xml"/>
+  <mapping resource="entities/Payment.hbm.xml"/>
+  <mapping resource="entities/PaymentOption.hbm.xml"/>
+  <mapping resource="entities/Schedule.hbm.xml"/>
+  <mapping resource="entities/Staff.hbm.xml"/>
+  <mapping class="entities.Customer" resource="entities/Customer.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2017-10-02 19:26:43 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="simplegymdb" dynamic-insert="false" dynamic-update="false" mutable="true" name="entities.Schedule" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="schedule">
+        <id name="classDate" type="timestamp">
+            <column length="19" name="class_date"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="entities.Classes" embed-xml="true" fetch="select" insert="true" name="classes" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="class_id" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

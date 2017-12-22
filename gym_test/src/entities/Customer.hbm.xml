@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2017-10-02 19:26:43 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="simplegymdb" dynamic-insert="false" dynamic-update="false" mutable="true" name="entities.Customer" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="customer">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="customer_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="entities.Address" embed-xml="true" fetch="select" insert="true" name="address" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="address_id"/>
+        </many-to-one>
+        <many-to-one class="entities.PaymentOption" embed-xml="true" fetch="select" insert="true" name="paymentOption" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="pay_opt_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="firstName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="first_name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="lastName" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="last_name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="email"/>
+        </property>
+        <property generated="never" lazy="false" name="mobilePhone" optimistic-lock="true" type="string" unique="false">
+            <column length="12" name="mobile_phone"/>
+        </property>
+        <property generated="never" lazy="false" name="payOptUpdate" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="pay_opt_update" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="joinDate" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="join_date" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="payments" optimistic-lock="true" sort="unsorted" table="payment">
+            <key on-delete="noaction">
+                <column name="customer_id" not-null="true"/>
+            </key>
+            <one-to-many class="entities.Payment" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="activitieses" optimistic-lock="true" sort="unsorted" table="activities">
+            <key on-delete="noaction">
+                <column name="customer_id" not-null="true"/>
+            </key>
+            <one-to-many class="entities.Activities" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

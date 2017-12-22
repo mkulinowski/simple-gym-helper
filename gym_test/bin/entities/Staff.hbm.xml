@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2017-10-02 19:26:43 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="simplegymdb" dynamic-insert="false" dynamic-update="false" mutable="true" name="entities.Staff" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="staff">
+        <id name="staffId" type="java.lang.Integer">
+            <column name="staff_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="entities.Address" embed-xml="true" fetch="select" insert="true" name="address" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="address_id" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="entities.Classes" embed-xml="true" fetch="select" insert="true" name="classes" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="classes_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="firstName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="first_name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="lastName" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="last_name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="email"/>
+        </property>
+        <property generated="never" lazy="false" name="mobilePhone" optimistic-lock="true" type="string" unique="false">
+            <column length="12" name="mobile_phone" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="position" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="position"/>
+        </property>
+        <property generated="never" lazy="false" name="salary" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="salary" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="lastUpdate" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="last_update" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="classeses" optimistic-lock="true" sort="unsorted" table="classes">
+            <key on-delete="noaction">
+                <column name="staff_id"/>
+            </key>
+            <one-to-many class="entities.Classes" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2017-10-02 19:26:43 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="simplegymdb" dynamic-insert="false" dynamic-update="false" mutable="true" name="entities.Activities" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="activities">
+        <id name="activityId" type="java.lang.Integer">
+            <column name="activity_id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="entities.Classes" embed-xml="true" fetch="select" insert="true" name="classes" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="class_id"/>
+        </many-to-one>
+        <many-to-one class="entities.Customer" embed-xml="true" fetch="select" insert="true" name="customer" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="customer_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="activityDate" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="activity_date"/>
+        </property>
+    </class>
+</hibernate-mapping>
