@@ -135,21 +135,5 @@ public class GenericDAOImpl<T> implements IGenericDAO<T>{
 	        return t;
 	}
 
-    public Schedule findScheduleByDate(Date date){
-    	Schedule schedule = null;
-    	Transaction transaction = null;
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-    	try{
-    		transaction = session.beginTransaction();
-    		CriteriaQuery<Schedule> cq = session.getCriteriaBuilder().createQuery(Schedule.class);
-    		Root<Schedule> from = cq.from(Schedule.class);
-    		
-    	}catch(RuntimeException e){
-    		e.printStackTrace();
-    		transaction.rollback();
-    	}
-    	return schedule;
-    }
-
+  
 }
